@@ -27,6 +27,10 @@ typedef struct {
 #error "require PHP version 7.1 or later"
 #endif
 
+#if PHP_VERSION_ID < 70300
+#define HT_FLAGS(ht) (ht)->u.flags
+#endif
+
 // Fixed in php-7.0.28, php-7.1.15RC1, php-7.2.3RC1 (https://github.com/php/php-src/commit/e88e83d3e5c33fcd76f08b23e1a2e4e8dc98ce41)
 #if PHP_MAJOR_VERSION == 7 && ((PHP_MINOR_VERSION == 0 && PHP_RELEASE_VERSION < 28) || (PHP_MINOR_VERSION == 1 && PHP_RELEASE_VERSION < 15) || (PHP_MINOR_VERSION == 2 && PHP_RELEASE_VERSION < 3))
 // See https://github.com/php/php-src/commit/0495bf5650995cd8f18d6a9909eb4c5dcefde669

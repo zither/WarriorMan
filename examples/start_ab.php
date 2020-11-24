@@ -1,7 +1,7 @@
 <?php
 use Workerman\Worker;
 use Workerman\Lib\Timer;
-use WOrkerman\Db\MysqlPool;
+use Workerman\Db\MysqlPool;
 
 require_once 'Workerman/Autoloader.php';
 

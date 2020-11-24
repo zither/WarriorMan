@@ -1,7 +1,7 @@
-#!/bin/sh
-/usr/local/php7/bin/phpize --clean
-/usr/local/php7/bin/phpize
-./configure --with-php-config=/usr/local/php7/bin/php-config
+#!/bin/bash
+/usr/bin/phpize --clean
+/usr/bin/phpize
+./configure --with-php-config=/usr/bin/php-config
 make clean
 make -j4
 make install

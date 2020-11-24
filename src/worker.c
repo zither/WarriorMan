@@ -714,7 +714,7 @@ void checkEnv() {
 	//设置status文件位置
 	_statisticsFile = wmString_dup("/tmp", 4);
 	wmString_append(_statisticsFile, _startFile);
-	for (int i = 4; i < _statisticsFile->length; i++) {
+	for (int i = 5; i < _statisticsFile->length; i++) {
 		if (_statisticsFile->str[i] == '/') {
 			_statisticsFile->str[i] = '_';
 		}

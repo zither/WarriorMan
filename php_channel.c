@@ -151,8 +151,8 @@ PHP_METHOD(workerman_channel, isEmpty) {
 	chan_t = (wmChannelObject*) wmChannel_fetch_object(Z_OBJ_P(getThis()));
 	chan = chan_t->chan;
 	int num = wmChannel_num(chan);
-	bool is_exist = (num > 0);
-	RETURN_BOOL(is_exist);
+	bool is_empty = (num < 1);
+	RETURN_BOOL(is_empty);
 }
 
 /**

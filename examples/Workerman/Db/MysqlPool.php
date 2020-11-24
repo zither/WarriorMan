@@ -8,7 +8,7 @@ class MysqlPool extends AbstractPool
 {
     protected function createDb()
     {
-        $db = new Mysql($this->config['host'], $this->config['port'], $this->config['username'], $this->config['password'], $this->config['db_name']);
+        $db = new MySQL($this->config['host'], $this->config['port'], $this->config['username'], $this->config['password'], $this->config['db_name']);
         // if ($db->connected == false) {
         // dd("createDb error : " . $db->connect_error);
         // return false;
