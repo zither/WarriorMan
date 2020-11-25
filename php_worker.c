@@ -92,6 +92,24 @@ PHP_METHOD(workerman_worker, listen) {
 }
 
 /**
+ * 平滑重启Worker
+ */
+PHP_METHOD(workerman_worker, reload) {
+	wmWorkerObject *worker_obj;
+	worker_obj = (wmWorkerObject*) wm_worker_fetch_object(Z_OBJ_P(getThis()));
+	wmWorker_reload(worker_obj->worker);
+}
+
+/**
+ * 获取 Worker 当前请求数量
+ */
+PHP_METHOD(workerman_worker, requestNum) {
+    unsigned long num = wmWorker_requestNum();
+    //@FIXME
+    RETURN_LONG((long)num);
+}
+
+/**
  *  私有方法，扩展用
  */
 PHP_METHOD(workerman_worker, _listen) {
@@ -129,6 +147,8 @@ static const zend_function_entry workerman_worker_methods[] = { //
 		PHP_ME(workerman_worker, stopAll, arginfo_workerman_worker_void, ZEND_ACC_PUBLIC| ZEND_ACC_STATIC)
 		PHP_ME(workerman_worker, _listen, arginfo_workerman_worker_void, ZEND_ACC_PRIVATE)
 		PHP_ME(workerman_worker, listen, arginfo_workerman_worker_void, ZEND_ACC_PUBLIC)
+		PHP_ME(workerman_worker, reload, arginfo_workerman_worker_void, ZEND_ACC_PUBLIC)
+		PHP_ME(workerman_worker, requestNum, arginfo_workerman_worker_void, ZEND_ACC_PUBLIC)
 		PHP_ME(workerman_worker, run, arginfo_workerman_worker_void, ZEND_ACC_PRIVATE)
 		PHP_ME(workerman_worker, rename, arginfo_workerman_worker_void, ZEND_ACC_PUBLIC| ZEND_ACC_STATIC)
 		PHP_FE_END };

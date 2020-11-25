@@ -59,6 +59,8 @@ wmWorker* wmWorker_create(zval *_This, zend_string *socketName);
 void wmWorker_listen(wmWorker *worker);
 void wmWorker_resumeAccept(wmWorker *worker);
 void wmWorker_run(wmWorker *worker);
+void wmWorker_reload(wmWorker *worker);
+unsigned long wmWorker_requestNum();
 void wmWorker_runAll(); //启动服务器
 void wmWorker_stopAll();
 void wmWorker_free(wmWorker *worker);

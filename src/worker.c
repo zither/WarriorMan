@@ -172,6 +172,17 @@ void wmWorker_listen(wmWorker *worker) {
 	}
 }
 
+//平滑重启worker
+void wmWorker_reload(wmWorker *worker) {
+	reload();
+}
+
+//获取请求数量
+unsigned long wmWorker_requestNum() {
+	return wmConnection_getTotalRequestNum();
+}
+
+
 //取消监听
 void _unlisten(wmWorker *worker) {
 	if (worker->socket) {

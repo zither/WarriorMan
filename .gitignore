@@ -36,3 +36,4 @@ tests/*/*.log
 tests/*/*.sh
 *.pid
 *.log
+*.swp
