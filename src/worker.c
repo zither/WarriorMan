@@ -178,7 +178,7 @@ void wmWorker_reload(wmWorker *worker) {
 }
 
 //获取请求数量
-unsigned long wmWorker_requestNum() {
+long wmWorker_requestNum() {
 	return wmConnection_getTotalRequestNum();
 }
 

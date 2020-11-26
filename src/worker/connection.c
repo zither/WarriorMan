@@ -5,7 +5,7 @@
 static long wm_coroutine_socket_last_id = 0;
 static wmHash_INT_PTR *wm_connections = NULL; //记录着正在连接状态的conn
 static wmString *_read_buffer_tmp = NULL; //每次read都从这里中转
-static unsigned long total_request = 0; //处理消息总数
+static long total_request = 0; //处理消息总数
 static socklen_t addr_len = sizeof(struct sockaddr);
 
 //检查是否发送缓存区慢
@@ -367,7 +367,7 @@ long wmConnection_getConnectionsNum() {
 /**
  * 获取total_request
  */
-unsigned long wmConnection_getTotalRequestNum() {
+long wmConnection_getTotalRequestNum() {
 	return total_request;
 }
 

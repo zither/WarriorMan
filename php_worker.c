@@ -104,9 +104,8 @@ PHP_METHOD(workerman_worker, reload) {
  * 获取 Worker 当前请求数量
  */
 PHP_METHOD(workerman_worker, requestNum) {
-    unsigned long num = wmWorker_requestNum();
-    //@FIXME
-    RETURN_LONG((long)num);
+    long num = wmWorker_requestNum();
+    RETURN_LONG(num);
 }
 
 /**

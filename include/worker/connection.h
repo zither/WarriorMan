@@ -59,7 +59,7 @@ int wmConnection_destroy(wmConnection *connection);
 void wmConnection_free(wmConnection *socket);
 void wmConnection_closeConnections();
 long wmConnection_getConnectionsNum();
-unsigned long wmConnection_getTotalRequestNum();
+long wmConnection_getTotalRequestNum();
 void wmConnection_consumeRecvBuffer(wmConnection *connection, zend_long length);
 char* wmConnection_getRemoteIp(wmConnection *connection);
 int wmConnection_getRemotePort(wmConnection *connection);
