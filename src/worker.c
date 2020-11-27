@@ -99,7 +99,7 @@ wmWorker* wmWorker_create(zval *_This, zend_string *socketName) {
 	worker->onBufferFull = NULL;
 	worker->onBufferDrain = NULL;
 	worker->onError = NULL;
-	worker->workerId = _last_id++; //worker id
+	worker->workerId = ++_last_id; //worker id
 	worker->fd = 0;
 	worker->backlog = WM_DEFAULT_BACKLOG;
 	worker->host = NULL;
