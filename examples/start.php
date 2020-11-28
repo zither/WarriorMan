@@ -1,14 +1,14 @@
 <?php
 use Workerman\Worker;
 use Workerman\Lib\Timer;
-use WOrkerman\Db\MysqlPool;
+use Workerman\Db\MysqlPool;
 
 require_once 'Workerman/Autoloader.php';
 
 Warriorman\Worker::rename(); // 将Workerman改为Workerman
 Warriorman\Runtime::enableCoroutine(); // hook相关函数
 
-$worker = new Worker("tcp://0.0.0.0:8080");
+$worker = new Worker("tcp://0.0.0.0:8888");
 $worker->count = 1;
 $worker->name = "tcpServer"; // 设置名字
 $worker->protocol = "\Workerman\Protocols\Http"; // 设置协议
