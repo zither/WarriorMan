@@ -109,6 +109,7 @@ bool wmWorkerLoop_add(wmSocket *socket, int event) {
 	if (socket->events == WM_EVENT_NULL) {
 		LOOP_TYPE = EPOLL_CTL_ADD;
 	}
+
 	socket->events |= event;
 
 	//初始化epoll
@@ -162,10 +163,10 @@ bool wmWorkerLoop_remove(wmSocket *socket, int event) {
 bool wmWorkerLoop_del(wmSocket *socket) {
 	if (socket->events != WM_EVENT_NULL) {
 		socket->events = WM_EVENT_NULL;
-		if (epoll_ctl(WorkerG.poll->epollfd, EPOLL_CTL_DEL, socket->fd, NULL) < 0) {
-			wmWarn("Error has occurred: fd=%d (errno %d) %s", socket->fd, errno, strerror(errno));
-			return false;
-		}
+	}
+	if (epoll_ctl(WorkerG.poll->epollfd, EPOLL_CTL_DEL, socket->fd, NULL) < 0) {
+		wmWarn("Error has occurred: fd=%d (errno %d) %s", socket->fd, errno, strerror(errno));
+		return false;
 	}
 	return true;
 }
