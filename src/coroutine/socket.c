@@ -605,7 +605,7 @@ bool wmSocket_shutdown(wmSocket *socket, int __how) {
 int wmSocket_close(wmSocket *socket) {
 	socket->closed = true;
 	if (socket->events != WM_EVENT_NULL) {
-		socket->events = WM_EVENT_NULL;
+		//socket->events = WM_EVENT_NULL;
 		wmWorkerLoop_del(socket); //释放事件
 		if (socket->read_co) {
 			wmCoroutine_resume(socket->read_co);
