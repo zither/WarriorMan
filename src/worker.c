@@ -1319,9 +1319,16 @@ void writeStatisticsToStatusFile() {
 		wm_file_put_contents(_statisticsFile->str, WorkerG.buffer_stack->str, ret, true); //写入PID文件
 
 		struct tm *timeinfo = localtime(&_start_timestamp);
+
+        long current_timestamp;
+        wmGetMilliTime(&current_timestamp);
+        int total_seconds = (current_timestamp / 1000) - _start_timestamp;
+        int days = total_seconds / (3600 * 24);
+        int hours = (total_seconds % (3600 * 24)) / 3600;
+
 		strftime(WorkerG.buffer_stack->str, WorkerG.buffer_stack->size, "%Y-%m-%d %H:%M:%S", timeinfo);
 		ret = wm_snprintf(WorkerG.buffer_stack_large->str, WorkerG.buffer_stack_large->size, "start time:%s   run %d days %d hours\n",
-			WorkerG.buffer_stack->str, 0, 0);
+			WorkerG.buffer_stack->str, days, hours);
 		wm_file_put_contents(_statisticsFile->str, WorkerG.buffer_stack_large->str, ret, true); //写入PID文件
 
 		// Workers
